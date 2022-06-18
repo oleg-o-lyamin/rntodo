@@ -19,6 +19,7 @@ export enum ActionType {
   FetchTodosSuccess = 'FetchTodosSuccess',
   FetchTodosFailure = 'FetchTodosFailure',
   ChangeTodo = 'ChangeTodo',
+  DeleteTodo = 'DeleteTodo',
 }
 
 export interface ActionBase {
@@ -44,8 +45,13 @@ export interface ChangeTodo extends ActionBase {
   todo: TodoItem;
 }
 
+export interface DeleteTodo extends ActionBase {
+  todo: TodoItem;
+}
+
 export type Action =
   | FetchTodosRequest
   | FetchTodosFailure
   | FetchTodosRequest
-  | ChangeTodo;
+  | ChangeTodo
+  | DeleteTodo;

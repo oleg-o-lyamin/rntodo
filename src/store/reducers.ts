@@ -25,6 +25,12 @@ const todosReducer = (state = DEFAULT_STATE, action: Action): TodosState => {
         ...state,
         todos: {...state.todos, [action.todo.id]: action.todo},
       };
+    case ActionType.DeleteTodo:
+      return {
+        ...state,
+        todos: Object.fromEntries(Object.entries(state.todos)
+          .filter(([key, value]) => key != action.todo.id)),
+      };
     default:
       return state;
   }

@@ -7,6 +7,7 @@ import {
   FetchTodosSuccess,
   TodosState,
   ChangeTodo,
+  DeleteTodo,
 } from './types';
 
 export const fetchTodosSuccess = (todos: TodosMap): FetchTodosSuccess => ({
@@ -32,11 +33,9 @@ export const fetchTodos =
   async dispatch => {
     dispatch(fetchTodosRequest());
     try {
-      const index = Math.floor(Math.random() * 2);
-      console.log(index);
-      const response = await fetch(config.todosUrl[index]);
+      const response = await fetch(config.todosUrl);
       const result: TodoItem[] = await response.json();
-      const todos = result.reduce((acc, todo) => {
+      const todos = result.slice(0, 20).reduce((acc, todo) => {
         acc[todo.id] = todo;
         return acc;
       }, {});
@@ -51,3 +50,8 @@ export const changeTodo = (todo: TodoItem): ChangeTodo => ({
   type: ActionType.ChangeTodo,
   todo,
 });
+
+export const deleteTodo = (todo: TodoItem): DeleteTodo => ({
+  type: ActionType.DeleteTodo,
+  todo,
+})

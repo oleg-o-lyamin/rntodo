@@ -7,7 +7,7 @@ import {
 import {DeleteButton} from './../DeleteButton/DeleteButton.tsx';
 import {Checkbox} from './../Checkbox/Checkbox.tsx';
 
-export const TodoElement = ({todo, styles, handleComplete, handleRemove}) => {
+export const TodoElement = ({todo, styles, handleComplete, handleRemove, handlePress}) => {
 	return (
 		<View key={`${todo.id}-${todo.title}`} style={styles.todoContainer}>
 		  <Checkbox
@@ -15,7 +15,7 @@ export const TodoElement = ({todo, styles, handleComplete, handleRemove}) => {
 		      onPress={handleComplete}
 		      checked={todo.completed}
 		  />
-		  <Pressable onPress={() => handleComplete(todo.id) } style={styles.todoPressable}>
+		  <Pressable onPress={() => handlePress(todo.id) } style={styles.todoPressable}>
 		    <Text
 		      style={[
 		        styles.todoText,

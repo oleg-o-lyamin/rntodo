@@ -1,14 +1,15 @@
 import React from 'react';
 
 import {TodoList} from '../screens/TodoList/TodoList';
+import {TodoDetails} from '../screens/Todo/TodoDetails';
 import {Empty} from '../screens/TodoList/empty';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-const Tab = createBottomTabNavigator();
+const Stack = createNativeStackNavigator();
 
-export const TabNavigator = () => (
-  <Tab.Navigator>
-    <Tab.Screen name="Todo List" component={TodoList} />
-    <Tab.Screen name="Empty" component={Empty} />
-  </Tab.Navigator>
+export const StackNavigator = () => (
+  <Stack.Navigator>
+    <Stack.Screen name="Todo List" component={TodoList} />
+    <Stack.Screen name="TodoDetails" component={TodoDetails} />
+  </Stack.Navigator>
 );

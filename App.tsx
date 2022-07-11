@@ -4,13 +4,13 @@ import {Provider} from 'react-redux';
 import {TodoList} from './src/screens/TodoList/TodoList';
 import {store} from './src/store';
 import {NavigationContainer} from '@react-navigation/native';
-import {TabNavigator} from './src/navigation/navigation';
+import {StackNavigator} from './src/navigation/navigation';
 const App = () => {
   return (
     <Provider store={store}>
       <StatusBar />
       <NavigationContainer>
-        <TabNavigator />
+        <StackNavigator />
       </NavigationContainer>
     </Provider>
   );

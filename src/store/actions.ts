@@ -36,7 +36,7 @@ export const fetchTodos =
       const response = await fetch(config.todosUrl);
       const result: TodoItem[] = await response.json();
       const todos = result.slice(0, 20).reduce((acc, todo) => {
-        acc[todo.id] = todo;
+        acc[todo.id] = {...todo, assets: []};
         return acc;
       }, {});
 

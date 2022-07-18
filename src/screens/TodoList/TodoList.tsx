@@ -17,13 +17,13 @@ import {config} from '../../config';
 import {changeTodo, fetchTodos, deleteTodo} from '../../store/actions';
 import {selectRequestStatus, selectTodos} from '../../store/selectors';
 import {styles} from './TodoList.styles';
-import {TodoItem} from './TodoList.types';
+import {TodoItem, TodoListProps} from './TodoList.types';
 import {TextField} from './../../components/TextField/TextField.tsx';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {DeleteButton} from './../../components/DeleteButton/DeleteButton.tsx';
 import {TodoElement} from './../../components/TodoElement/TodoElement.tsx';
 
-export const TodoList = () => {
+export const TodoList = ({navigation}: TodoListProps) => {
   const todos = useSelector(selectTodos);
   const requestStatus = useSelector(selectRequestStatus);
   const dispatch = useDispatch();
@@ -53,6 +53,7 @@ export const TodoList = () => {
     title: text,
     id: Math.floor(Math.random() * 10000000 + 1000), 
     completed:false,
+    assets: [],
     }; 
 
     dispatch(changeTodo(newTodo));
@@ -63,8 +64,23 @@ export const TodoList = () => {
     dispatch(deleteTodo(todoRemove));
   };
 
-  const renderTodo = ({item}: ListRenderItemInfo<TodoItem>) => (
-    <TodoElement todo={item} styles={styles} handleComplete={handleComplete} handleRemove={handleRemove} />
+  const handleTodoPress = useCallback(
+    (id: string) => {
+      navigation.push('TodoDetails', {todoId: id});
+    },
+    [navigation],
+  );
+
+  const renderTodo = useCallback(
+    ({item}: ListRenderItemInfo<TodoItem>) => (
+      <TodoElement 
+        todo={item} 
+        styles={styles} 
+        handleComplete={handleComplete}
+        handleRemove={handleRemove}
+        handlePress={handleTodoPress} />
+      ),
+      [handleComplete, handleRemove, handleTodoPress],
   );
 
   const sections = useMemo(

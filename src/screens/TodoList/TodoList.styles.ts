@@ -10,7 +10,7 @@ export const styles = StyleSheet.create({
     justifyContent: 'flex-start',
   },
   todoText: {
-    marginLeft: 16,
+    marginLeft: 5,
     lineHeight: 30,
     textTransform: 'capitalize',
   },
@@ -31,5 +31,10 @@ export const styles = StyleSheet.create({
     height: 2,
     width: '100%',
     backgroundColor: 'black',
+  },
+  image: {
+    width: 20,
+    height: 20,
+    marginLeft: 5,
   }
 });

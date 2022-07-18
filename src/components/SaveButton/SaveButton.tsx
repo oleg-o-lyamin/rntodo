@@ -7,7 +7,6 @@ export const SaveButton = ({disabled, onPress}: SaveButtonProps) => (
 		disabled={disabled}
 		onPress={onPress}
 		>
-		{/*<Icon name="check" color="white" size={20} />*/}
-		{!disabled && <Text>OK</Text>}
+		{!disabled && <Icon name="check" color="black" size={20} />}
 	</TouchableOpacity>
 );

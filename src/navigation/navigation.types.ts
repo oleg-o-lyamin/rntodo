@@ -6,10 +6,14 @@ export type IStackNavigation = {
 };
 
 export type RootStackParamList = {
-  TodoList: undefined;
+  TodoList: undefined,
   TodoDetails: {
-    todoId: string;
-  };
+    todoId: string,
+  },
+  ImageFull: {
+    assetUri: string,
+    todoId: string,
+  }
 }
 
 type ScreenNavigationProp<T extends keyof RootStackParamList> =

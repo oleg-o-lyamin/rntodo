@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, View,Button} from 'react-native';
+import {TouchableOpacity, Text, View,Button, Image} from 'react-native';
 import {styles} from './TodoDetails.styles';
 import {selectTodoById} from '../../store/selectors';
 import {useSelector, useDispatch} from 'react-redux';
@@ -35,28 +35,37 @@ export const TodoDetails = ({route, navigation}: TodoDetailsProps) => {
 		});
 	}, [isDirty, navigation, handleSave]);
 
+	const handlePress = (uri: string) => {
+		navigation.push('ImageFull', {todoId: todo.id, assetUri: uri});
+	};
+
 	return (
 		<View style={styles.container}>
 			<Text>Todo Details: {route.params.todoId}</Text>
 			<Text>{todo.title}</Text>
 			{todo.completed && <Text>Completed</Text>}
 			<TextInput value={text} onChangeText={setText} style={styles.textInput}/>
-			{/*<Text>Attachments</Text>
+			<Text>Attachments</Text>
 			{
 				todo.assets && todo.assets.map(asset => {
 				return (
 					<View key={ asset.fileName }>
-						<Image source={ {uri: asset.uri } } style={ styles.image } />
+						<TouchableOpacity onPress={() => handlePress(asset.uri)}>
+							<Image source={ {uri: asset.uri} } style={ styles.image } />
+						</TouchableOpacity>
 					</View>
 				)
 				})
-			}*/}
+			}
 			<Button onPress={() => {
 						launchImageLibrary(
-							{mediaType: 'photo', selectionLimit: 0},
-							({assets,}) => {
-								if (assets) {
-									setText('100500');
+							{mediaType: 'photo', selectionLimit: 1},
+							(response) => {
+								if (response.uri) {
+									dispatch(changeTodo({
+										...todo,
+										assets: todo.assets ? [...todo.assets, response] : [response],
+									}));
 								}
 							},
 						)

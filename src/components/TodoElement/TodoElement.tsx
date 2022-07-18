@@ -3,6 +3,7 @@ import {
   Pressable,
   Text,
   View,
+  Image
 } from 'react-native';
 import {DeleteButton} from './../DeleteButton/DeleteButton.tsx';
 import {Checkbox} from './../Checkbox/Checkbox.tsx';
@@ -15,6 +16,7 @@ export const TodoElement = ({todo, styles, handleComplete, handleRemove, handleP
 		      onPress={handleComplete}
 		      checked={todo.completed}
 		  />
+		  { todo.assets.length > 0 && <Image source={ {uri: todo.assets[0].uri} } style={styles.image} />}
 		  <Pressable onPress={() => handlePress(todo.id) } style={styles.todoPressable}>
 		    <Text
 		      style={[

@@ -12,5 +12,10 @@ export const styles = StyleSheet.create({
 
   container: {
     padding:16,
+  },
+
+  image: {
+    width: 50,
+    height: 50,
   }
 })

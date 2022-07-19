@@ -19,6 +19,8 @@ target 'rntodo' do
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
 
+  pod 'RNDateTimePicker', :path => '../node_modules/@react-native-community/datetimepicker'
+
   target 'rntodoTests' do
     inherit! :complete
     # Pods for testing

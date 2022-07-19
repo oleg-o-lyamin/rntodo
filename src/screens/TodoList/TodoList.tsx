@@ -54,6 +54,7 @@ export const TodoList = ({navigation}: TodoListProps) => {
     id: Math.floor(Math.random() * 10000000 + 1000), 
     completed:false,
     assets: [],
+    notificationIsOn: false,
     }; 
 
     dispatch(changeTodo(newTodo));
@@ -109,6 +110,8 @@ export const TodoList = ({navigation}: TodoListProps) => {
       </Text>
     );
   }, []);
+
+  
 
   return (
     <SafeAreaView>

@@ -12,10 +12,23 @@ export const styles = StyleSheet.create({
 
   container: {
     padding:16,
+    flex: 1, 
   },
 
   image: {
     width: 50,
     height: 50,
-  }
+    margin: 2,
+  },
+
+  attachmentsContainer: {
+    flexDirection: 'row'
+  },
+
+  attachButtonView: {
+    flex: 1,
+    justifyContent: 'flex-end',
+    marginBottom: 40,
+  },
+
 })

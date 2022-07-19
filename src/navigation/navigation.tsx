@@ -10,7 +10,7 @@ const Stack = createNativeStackNavigator();
 
 export const StackNavigator = () => (
   <Stack.Navigator>
-    <Stack.Screen name="Todo List" component={TodoList} />
+    <Stack.Screen name="TodoList" component={TodoList} />
     <Stack.Screen name="TodoDetails" component={TodoDetails} />
     <Stack.Screen name="ImageFull" component={ImageFull} />
   </Stack.Navigator>

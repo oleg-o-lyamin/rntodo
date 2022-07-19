@@ -6,6 +6,7 @@ export interface TodoItem {
   title: string;
   completed: boolean;
   assets: Asset[];
+  notificationIsOn: boolean;
 }
 
 export type TodoListProps = NavigationProps<'TodoList'>;
